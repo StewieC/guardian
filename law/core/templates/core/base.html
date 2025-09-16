@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Peace and Justice Platform{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Peace and Justice Platform</h1>
+        {% if user.is_authenticated %}
+            <p>Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+        {% else %}
+            <p><a href="#">Login</a> to report incidents</p>
+        {% endif %}
+    </header>
+    <nav>
+        <a href="{% url 'home' %}">Dashboard</a>
+        <a href="{% url 'report_incident' %}">Report Incident</a>
+        <a href="{% url 'incident_list' %}">View Incidents</a>
+        <a href="{% url 'article_list' %}">Civic Education</a>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Peace and Justice Platform</p>
+    </footer>
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>

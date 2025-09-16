@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block title %}Reported Incidents{% endblock %}
+{% block content %}
+    <h2>Reported Incidents</h2>
+    <ul>
+        {% for incident in incidents %}
+            <li>
+                <h3>{{ incident.title }}</h3>
+                <p>{{ incident.description }}</p>
+                <p>Location: {{ incident.location }}</p>
+                <p>Reported by: {{ incident.reported_by.username }} on {{ incident.created_at }}</p>
+            </li>
+        {% empty %}
+            <li>No incidents reported yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}" class="back-link">Back to Dashboard</a>
+{% endblock %}
