@@ -18,9 +18,9 @@
                 <li><a href="{% url 'article_list' %}" class="nav-link {% if request.resolver_match.url_name == 'article_list' %}active{% endif %}">Civic Education</a></li>
                 <li><a href="{% url 'contact_authorities' %}" class="nav-link {% if request.resolver_match.url_name == 'contact_authorities' %}active{% endif %}">Contact Authorities</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" class="nav-link">Logout ({{ user.username }})</a></li>
+                    <li><a href="#" class="nav-link">Logout ({{ user.username }})</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li><a href="#" class="nav-link">Login</a></li>
                 {% endif %}
             </ul>
         </div>

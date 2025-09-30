@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Incident, Article
-from .forms import IncidentForm  # We'll create this next
+from .forms import IncidentForm
 
 def home(request):
     return render(request, 'core/home.html')
 
-@login_required
+
 def report_incident(request):
     if request.method == 'POST':
         form = IncidentForm(request.POST)
@@ -26,3 +26,6 @@ def incident_list(request):
 def article_list(request):
     articles = Article.objects.all().order_by('-published_at')
     return render(request, 'core/article_list.html', {'articles': articles})
+
+def contact_authorities(request):
+    return render(request, 'core/contact_authorities.html')
