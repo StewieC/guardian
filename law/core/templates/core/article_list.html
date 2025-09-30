@@ -1,17 +1,21 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 {% block title %}Civic Education Articles{% endblock %}
 {% block content %}
-    <h2>Civic Education Articles</h2>
-    <ul>
-        {% for article in articles %}
-            <li>
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.content|truncatewords:50 }}</p>
-                <p>By: {{ article.author.username|default:"Anonymous" }} on {{ article.published_at }}</p>
-            </li>
-        {% empty %}
-            <li>No articles available yet.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'home' %}" class="back-link">Back to Dashboard</a>
+<div class="container">
+    <h1>Civic Education Resources</h1>
+    <p>Learn about your rights, responsibilities, and the law through our comprehensive educational materials.</p>
+    <div class="education-categories">
+        <div class="category-card">
+            <h3>🏛️ Constitutional Rights</h3>
+            <p>Understanding your fundamental rights as a citizen</p>
+            <ul class="article-list">
+                {% for article in articles %}
+                    <li><a href="#" onclick="openModal('<h2>{{ article.title }}</h2><p>{{ article.content|truncatewords:50 }}</p><button class=\"btn\" onclick=\"closeModal()\">Close</button>')">{{ article.title }}</a></li>
+                {% empty %}
+                    <li>No articles available yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}

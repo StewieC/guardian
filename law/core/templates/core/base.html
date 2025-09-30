@@ -1,33 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Peace and Justice Platform{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Peace and Justice Platform</h1>
-        {% if user.is_authenticated %}
-            <p>Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
-        {% else %}
-            <p><a href="#">Login</a> to report incidents</p>
-        {% endif %}
-    </header>
-    <nav>
-        <a href="{% url 'home' %}">Dashboard</a>
-        <a href="{% url 'report_incident' %}">Report Incident</a>
-        <a href="{% url 'incident_list' %}">View Incidents</a>
-        <a href="{% url 'article_list' %}">Civic Education</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="logo">🛡️ Peace & Justice</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'report_incident' %}" class="nav-link {% if request.resolver_match.url_name == 'report_incident' %}active{% endif %}">Report Incident</a></li>
+                <li><a href="{% url 'incident_list' %}" class="nav-link {% if request.resolver_match.url_name == 'incident_list' %}active{% endif %}">View Incidents</a></li>
+                <li><a href="{% url 'article_list' %}" class="nav-link {% if request.resolver_match.url_name == 'article_list' %}active{% endif %}">Civic Education</a></li>
+                <li><a href="{% url 'contact_authorities' %}" class="nav-link {% if request.resolver_match.url_name == 'contact_authorities' %}active{% endif %}">Contact Authorities</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="nav-link">Logout ({{ user.username }})</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </nav>
-    <div class="container">
+    <main class="main-content">
         {% block content %}
         {% endblock %}
+    </main>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Peace and Justice Platform</p>
-    </footer>
-    <script src="/static/js/scripts.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

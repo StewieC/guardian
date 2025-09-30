@@ -1,18 +1,57 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 {% block title %}Reported Incidents{% endblock %}
 {% block content %}
-    <h2>Reported Incidents</h2>
-    <ul>
-        {% for incident in incidents %}
-            <li>
-                <h3>{{ incident.title }}</h3>
-                <p>{{ incident.description }}</p>
-                <p>Location: {{ incident.location }}</p>
-                <p>Reported by: {{ incident.reported_by.username }} on {{ incident.created_at }}</p>
-            </li>
-        {% empty %}
-            <li>No incidents reported yet.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'home' %}" class="back-link">Back to Dashboard</a>
+<section class="community-feed-section">
+    <div class="container">
+        <div class="feed-header">
+            <h2>Community Safety Feed</h2>
+            <p>Recent incidents in your area where community assistance is needed</p>
+            <div class="location-selector">
+                <select id="locationFilter" onchange="filterByLocation()">
+                    <option value="all">All Areas</option>
+                    <option value="downtown">Downtown</option>
+                    <option value="northside">Northside</option>
+                    <option value="eastside">Eastside</option>
+                    <option value="westside">Westside</option>
+                    <option value="southside">Southside</option>
+                </select>
+            </div>
+        </div>
+        <div class="incident-feed" id="incidentFeed">
+            {% for incident in incidents %}
+                <div class="incident-card" data-area="{{ incident.location|lower }}">
+                    <div class="incident-header">
+                        <span class="incident-type">{{ incident.title }}</span>
+                        <span class="incident-time">{{ incident.created_at|date:"SHORT_DATE_FORMAT" }}</span>
+                    </div>
+                    <div class="incident-location">📍 {{ incident.location }}</div>
+                    <div class="incident-description">{{ incident.description }}</div>
+                    <div class="incident-status">
+                        <span class="status-badge status-pending">Pending</span>
+                    </div>
+                    <div class="incident-actions">
+                        <button class="action-btn" onclick="alert('Providing information not yet implemented.')">💬 Provide Information</button>
+                        <button class="action-btn secondary" onclick="alert('Sharing not yet implemented.')">📤 Share</button>
+                        <button class="action-btn secondary" onclick="alert('Following updates not yet implemented.')">🔔 Follow Updates</button>
+                    </div>
+                </div>
+            {% empty %}
+                <p style="text-align: center; color: #6b7280; padding: 2rem;">No incidents found for the selected area.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<script>
+function filterByLocation() {
+    const selectedLocation = document.getElementById('locationFilter').value;
+    const incidentCards = document.querySelectorAll('.incident-card');
+    incidentCards.forEach(card => {
+        if (selectedLocation === 'all' || card.dataset.area === selectedLocation) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
 {% endblock %}

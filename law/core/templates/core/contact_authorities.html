@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Contact Authorities{% endblock %}
+{% block content %}
+<div class="container" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh;">
+    <h1 style="text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Contact Authorities</h1>
+    <p style="text-align: center; font-size: 1.125rem; color: #64748b; margin-bottom: 3rem;">Quick access to emergency services and relevant authorities when you need help.</p>
+    <div class="emergency-contacts">
+        <div class="contact-card">
+            <h3>🚨 Emergency Services</h3>
+            <div class="contact-number">911</div>
+            <p>For immediate life-threatening emergencies</p>
+            <div class="contact-buttons">
+                <button class="btn" onclick="alert('Calling not implemented.')">📞 Call Now</button>
+                <button class="btn btn-secondary" onclick="alert('Texting not implemented.')">💬 Text</button>
+            </div>
+        </div>
+        <div class="contact-card">
+            <h3>👮‍♂️ Police Department</h3>
+            <div class="contact-number">(555) 123-4567</div>
+            <p>Non-emergency police matters</p>
+            <div class="contact-buttons">
+                <button class="btn" onclick="alert('Calling not implemented.')">📞 Call</button>
+                <button class="btn btn-secondary" onclick="alert('Texting not implemented.')">💬 Text</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,11 +1,25 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 {% block title %}Report Incident{% endblock %}
 {% block content %}
-    <h2>Report an Incident</h2>
-    <form method="post">
+<div class="container">
+    <h1>Report an Incident</h1>
+    <p>Report incidents safely and securely. Your report will be forwarded to the appropriate authorities.</p>
+    <form class="report-form" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit Report</button>
+        <div class="form-group">
+            <label for="id_title">Type of Incident</label>
+            {{ form.title }}  <!-- Using title as a proxy for type -->
+        </div>
+        <div class="form-group">
+            <label for="id_location">Location of Incident</label>
+            {{ form.location }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Description of Incident</label>
+            {{ form.description }}
+        </div>
+        <button type="submit" class="btn">Submit Report</button>
+        <button type="button" class="btn btn-secondary" onclick="alert('Anonymous submission not yet implemented.')">Submit Anonymously</button>
     </form>
-    <a href="{% url 'home' %}" class="back-link">Back to Dashboard</a>
+</div>
 {% endblock %}

@@ -1,6 +1,45 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-    <h2>Welcome to the Dashboard</h2>
-    <p>Use the navigation above to report incidents, view reported incidents, or read civic education articles.</p>
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Promoting Peace & Justice</h1>
+            <p>Your comprehensive platform for legal assistance, civic education, and community safety. Empowering citizens with the tools they need for a just society.</p>
+            <div class="hero-cta">
+                <a href="{% url 'report_incident' %}" class="cta-button">📢 Report Issue</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="features-section">
+    <div class="container">
+        <div class="features-header">
+            <h2>Comprehensive Justice Services</h2>
+            <p>Everything you need to navigate legal challenges, protect your rights, and contribute to a safer community.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3>Legal Assistance</h3>
+                <p>Coming soon: File court cases, connect with lawyers, and get legal guidance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📢</div>
+                <h3>Report Incidents</h3>
+                <p>Safely report incidents and injustices to the appropriate authorities with complete confidentiality.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Civic Education</h3>
+                <p>Learn about your rights, laws, and civic responsibilities through our educational resources.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h3>Contact Authorities</h3>
+                <p>Direct access to emergency services, police, and other relevant authorities when you need immediate help.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
