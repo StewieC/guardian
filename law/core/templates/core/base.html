@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Peace and Justice Platform{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <a href="{% url 'home' %}" class="logo">🛡️ Peace & Justice</a>
-            <ul class="nav-links">
+            
+            <button class="hamburger" id="hamburger-button">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <ul class="nav-links" id="nav-links-menu">
                 <li><a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
                 <li><a href="{% url 'report_incident' %}" class="nav-link {% if request.resolver_match.url_name == 'report_incident' %}active{% endif %}">Report Incident</a></li>
                 <li><a href="{% url 'incident_list' %}" class="nav-link {% if request.resolver_match.url_name == 'incident_list' %}active{% endif %}">View Incidents</a></li>
                 <li><a href="{% url 'article_list' %}" class="nav-link {% if request.resolver_match.url_name == 'article_list' %}active{% endif %}">Civic Education</a></li>
                 <li><a href="{% url 'contact_authorities' %}" class="nav-link {% if request.resolver_match.url_name == 'contact_authorities' %}active{% endif %}">Contact Authorities</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="#" class="nav-link">Logout ({{ user.username }})</a></li>
+                    <li><a href="#" class="nav-link">Logout</a></li>
                 {% else %}
                     <li><a href="#" class="nav-link">Login</a></li>
                 {% endif %}

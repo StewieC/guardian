@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Peace and Justice Platform loaded');
+
+    // --- Mobile Navigation Toggle ---
+    const hamburger = document.getElementById('hamburger-button');
+    const navMenu = document.getElementById('nav-links-menu');
+
+    // Check if the elements exist before adding an event listener
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            // Toggle the 'active' class on both the hamburger and the menu
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
 });
 
-// Modal functionality
+// --- Modal Functionality (Unchanged) ---
 function openModal(content) {
     const modal = document.getElementById('modal');
     const modalBody = document.getElementById('modal-body');
@@ -11,7 +24,10 @@ function openModal(content) {
 }
 
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
 // Close modal when clicking outside
