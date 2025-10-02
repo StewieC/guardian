@@ -4,6 +4,7 @@ from .models import Incident, Article
 from .forms import IncidentForm
 
 def home(request):
+    incidents = Incident.objects.all().order_by('-created_at')[:5]  
     return render(request, 'core/home.html')
 
 
