@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}Find a Lawyer{% endblock %}
+{% block content %}
+<div class="container" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: 100vh;">
+    <h1 style="text-align: center; margin-bottom: 1rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Find a Lawyer</h1>
+    <p style="text-align: center; font-size: 1.125rem; color: #64748b; margin-bottom: 3rem;">Connect with experienced lawyers to assist with your legal needs.</p>
+    <div class="emergency-contacts">
+        {% for lawyer in lawyers %}
+            <div class="contact-card">
+                <h3>{{ lawyer.name }}</h3>
+                <div class="contact-number">{{ lawyer.specialty }}</div>
+                <p>📍 {{ lawyer.location }}<br>📞 {{ lawyer.phone }}<br>📧 {{ lawyer.email }}</p>
+                <div class="contact-buttons">
+                    <button class="btn" onclick="openModal(&quot;&lt;h2&gt;Contact {{ lawyer.name }}&lt;/h2&gt;&lt;p&gt;Specialty: {{ lawyer.specialty }}&lt;/p&gt;&lt;p&gt;Email: {{ lawyer.email }}&lt;/p&gt;&lt;p&gt;Phone: {{ lawyer.phone }}&lt;/p&gt;&lt;button class='btn' onclick='closeModal()'&gt;Close&lt;/button&gt;&quot;)">📞 Contact</button>
+                </div>
+            </div>
+        {% empty %}
+            <p style="text-align: center; color: #6b7280; padding: 2rem;">No lawyers available yet. Please check back later.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

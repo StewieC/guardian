@@ -7,4 +7,6 @@ urlpatterns = [
     path('incidents/', views.incident_list, name='incident_list'),
     path('articles/', views.article_list, name='article_list'),
     path('contact/', views.contact_authorities, name='contact_authorities'),
+    path('file-case/', views.file_case, name='file_case'),
+    path('find-lawyer/', views.find_lawyer, name='find_lawyer'),
 ]

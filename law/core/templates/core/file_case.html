@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% block title %}File a Case{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>File a Legal Case</h1>
+    <p>Start a legal case by providing details below. Your information will be securely submitted.</p>
+    <form class="report-form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Case Title</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label for="id_category">Case Category</label>
+            {{ form.category }}
+        </div>
+        <div class="form-group">
+            <label for="id_incident_date">Incident Date</label>
+            {{ form.incident_date }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Case Description</label>
+            {{ form.description }}
+        </div>
+        <button type="submit" class="btn">Submit Case</button>
+    </form>
+</div>
+{% endblock %}

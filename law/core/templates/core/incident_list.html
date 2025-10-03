@@ -7,7 +7,8 @@
             <h2>Community Safety Feed</h2>
             <p>Recent incidents in your area where community assistance is needed</p>
             <div class="location-selector">
-                <select id="locationFilter" onchange="filterByLocation()">
+                <label for="locationFilter" class="sr-only">Filter by Location</label>
+                <select id="locationFilter" onchange="filterByLocation()" aria-label="Filter by Location">
                     <option value="all">All Areas</option>
                     <option value="downtown">Downtown</option>
                     <option value="northside">Northside</option>
