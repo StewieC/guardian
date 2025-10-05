@@ -10,7 +10,11 @@
             <p>Understanding your fundamental rights as a citizen</p>
             <ul class="article-list">
                 {% for article in articles %}
-                    <li><a href="#" onclick="openModal('<h2>{{ article.title }}</h2><p>{{ article.content|truncatewords:50 }}</p><button class=\"btn\" onclick=\"closeModal()\">Close</button>')">{{ article.title }}</a></li>
+                    <li>
+                        <a href="#" onclick="openModal('&lt;div&gt;&lt;h2&gt;{{ article.title }}&lt;/h2&gt;&lt;p&gt;{{ article.content|truncatewords:50 }}&lt;/p&gt;&lt;button class=&quot;btn&quot; onclick=&quot;closeModal()&quot;&gt;Close&lt;/button&gt;&lt;/div&gt;')">
+                            {{ article.title }}
+                        </a>
+                    </li>
                 {% empty %}
                     <li>No articles available yet.</li>
                 {% endfor %}
